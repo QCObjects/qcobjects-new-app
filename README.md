@@ -1,4 +1,9 @@
-# QCObjects New App
+> **Official repository.** This is the maintained QCObjects app template.
+> Normative specifications live in
+> [QCObjects/product-specs](https://github.com/QCObjects/product-specs)
+> ([docs](https://qcobjects.github.io/product-specs/)).
+>
+> # QCObjects New App
 
 This is a demo of a QCObjects based front-end Progressive Web App
 
