@@ -54,8 +54,6 @@
     "build:static": "npx qcobjects-cli publish:static src/ build/ --exclude js --exclude=.DS_Store",
     "build:ts": "npm test && qcobjects build:typescript tsconfig.json",
      "build:ts-types": "qcobjects build:typescript tsconfig.d.json",
-     "build:esbuild": "qcobjects build:esbuild",
-     "build:esb": "qcobjects build:esb",
     "build:netlify": "npm run publish:web",
     "build": "npm run publish:web",
     "publish:static": "(npx qcobjects-cli publish:static build/ public/ --exclude js --exclude=.DS_Store) && npm run minify:css",
@@ -111,7 +109,7 @@
     "jasmine": "^3.99.0",
     "lighthouse": "^12.1.0",
     "lint-staged": "^13.2.1",
-    "qcobjects-cli": ">=2.4.65 <3.0.0",
+     "qcobjects-cli": ">=2.5.158 <3.0.0",
     "qcobjects-tsconfig": "^2.4.10",
     "semistandard": "^16.0.1",
     "typescript": "^5.0.4"
