@@ -123,12 +123,13 @@
     "grunt-contrib-jasmine": "^4.0.0",
     "npm-watch": "^0.11.0",
     "nyc": "^15.1.0",
-    "qcobjects": ">=2.4.95 <3.0.0",
+    "qcobjects": ">=2.5.142 <3.0.0",
     "qcobjects-admin": "^1.0.0",
-    "qcobjects-command-publish-static": "^1.0.4",
     "qcobjects-sdk": ">=2.4.64 <3.0.0"
   },
   "overrides": {
+    "@types/qcobjects": "https://github.com/QCObjects/-types-qcobjects/archive/51470ffb98ec539a5563e5eb5426e9d5adddfad3.tar.gz",
+    "@types/qcobjects-sdk": "https://github.com/QCObjects/-types-qcobjects-sdk/archive/230425c25deff48fc15dee4008def6e6afddacbd.tar.gz",
     "qcobjects-admin-lib-db-sqlite3": "^0.0.25"
   },
   "engines": {
