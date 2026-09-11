@@ -1,5 +1,5 @@
 /**
- * QCObjects New App PWA Template 1.x
+ * QCObjects Framework App Template
  * ________________
  *
  * Author: Jean Machuca <correojean@gmail.com>
