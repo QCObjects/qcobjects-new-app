@@ -60,6 +60,7 @@
     "build:netlify": "npm run publish:web",
     "build": "npm run publish:web",
      "publish:static": "npm run clean:appledouble && (npx qcobjects-cli publish:static build/ public/ --exclude js --exclude=.DS_Store) && npm run minify:css",
+     "postpublish:static": "npm run clean:appledouble",
     "publish:ios": "qcobjects publish ios",
     "publish:android": "qcobjects publish android",
     "publish:electron": "qcobjects publish electron",
