@@ -1,5 +1,9 @@
 # Changelog
 
+## v2.5.1-ts
+
+	- CI fixes: registry override + HTTPS types pins (unblocks npm install in publish)
+
 ## v2.5.0-ts
 
 	- License migration LGPLv3 → MIT (LICENSE.txt, package.json, source headers)
