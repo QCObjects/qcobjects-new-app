@@ -1,6 +1,6 @@
 {
   "name": "qcobjectsnewapp",
-  "version": "2.5.1-ts",
+  "version": "2.5.2-ts",
   "description": "App template for New App in QCObjects",
   "targets": {
     "default": {
@@ -51,12 +51,16 @@
     "minify:css": "(npx esbuild build/css/*.css build/css/**/*.css --outdir=public/css --keep-names --minify --global-name=global --sourcemap --loader:.svg=file --target=es2021)",
     "build:docker": "docker build -t qcobjects/qcobjects-newapp:latest .",
     "build:docker-compose": "docker-compose -f docker-compose.yml build --no-cache --force-rm --pull -q qcobjects",
-    "build:static": "npx qcobjects-cli publish:static src/ build/ --exclude js --exclude=.DS_Store",
+     "build:static": "npx qcobjects-cli publish:static src/ build/ --exclude js --exclude=.DS_Store",
+     "clean:appledouble": "node -e \"const fs=require('fs'),path=require('path');let n=0;for(const d of ['build','src'])if(fs.existsSync(d)){const walk=x=>fs.readdirSync(x,{withFileTypes:true}).flatMap(e=>{const p=path.join(x,e.name);return e.isDirectory()?walk(p):[p]});for(const f of walk(d))if(path.basename(f).startsWith('._')){fs.rmSync(f);n++;}}console.log('appledouble removed:',n)\"",
+     "build:ts": "npm test && qcobjects build:typescript tsconfig.json",
+     "build:ts-types": "qcobjects build:typescript tsconfig.d.json",
     "build:ts": "npm test && qcobjects build:typescript tsconfig.json",
     "build:ts-types": "qcobjects build:typescript tsconfig.d.json",
     "build:netlify": "npm run publish:web",
     "build": "npm run publish:web",
-    "publish:static": "(npx qcobjects-cli publish:static build/ public/ --exclude js --exclude=.DS_Store) && npm run minify:css",
+     "publish:static": "npm run clean:appledouble && (npx qcobjects-cli publish:static build/ public/ --exclude js --exclude=.DS_Store) && npm run minify:css",
+     "postpublish:static": "npm run clean:appledouble",
     "publish:ios": "qcobjects publish ios",
     "publish:android": "qcobjects publish android",
     "publish:electron": "qcobjects publish electron",
@@ -119,12 +123,13 @@
     "grunt-contrib-jasmine": "^4.0.0",
     "npm-watch": "^0.11.0",
     "nyc": "^15.1.0",
-    "qcobjects": ">=2.4.95 <3.0.0",
+    "qcobjects": ">=2.5.142 <3.0.0",
     "qcobjects-admin": "^1.0.0",
-    "qcobjects-command-publish-static": "^1.0.4",
     "qcobjects-sdk": ">=2.4.64 <3.0.0"
   },
   "overrides": {
+    "@types/qcobjects": "https://github.com/QCObjects/-types-qcobjects/archive/51470ffb98ec539a5563e5eb5426e9d5adddfad3.tar.gz",
+    "@types/qcobjects-sdk": "https://github.com/QCObjects/-types-qcobjects-sdk/archive/230425c25deff48fc15dee4008def6e6afddacbd.tar.gz",
     "qcobjects-admin-lib-db-sqlite3": "^0.0.25"
   },
   "engines": {
