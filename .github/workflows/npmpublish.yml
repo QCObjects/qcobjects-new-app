@@ -45,5 +45,5 @@ jobs:
           elif [[ "${{ github.ref }}" == *-lts ]]; then
             npm publish --tag lts
           else
-            npm publish
+            npm publish --tag latest
           fi
