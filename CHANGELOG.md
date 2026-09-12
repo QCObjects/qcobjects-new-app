@@ -1,5 +1,11 @@
 # Changelog
 
+## v2.5.5-ts
+
+	- fix: npmpublish workflow now passes explicit --tag latest on the default branch (modern npm refuses bare npm publish for prerelease versions: You must specify a tag using --tag when publishing a prerelease version — killed the v2.5.4-ts publish after build went green; the npm@latest upgrade for OIDC is what enforces it).
+	- version: 2.5.4-ts -> 2.5.5-ts (v2.5.4-ts tag points at the pre-workflow-fix main; tags immutable -> new number)
+
+
 ## v2.5.4-ts
 
 	- fix: neutralize inherited tsconfig paths wildcard ("*": ["src/*"] from qcobjects/tsconfig.json hijacked bare imports into node_modules/qcobjects/src/<lowercase> — hard Cannot-read-file error on case-sensitive CI runners; invisible on case-insensitive dev mounts). Template now sets baseUrl+explicit paths (keeps case-correct types mapping). Verified in case-sensitive clean-room sim: rc=1+exact CI error before -> rc=0+zero warnings after; iife bundle browser-safe (0 eager node:/types imports).
