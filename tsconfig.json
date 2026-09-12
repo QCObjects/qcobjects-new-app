@@ -15,7 +15,11 @@
     ],
     "rootDir": "src",
     "allowJs": true,
-    "outDir": "build"
+    "outDir": "build",
+    "baseUrl": ".",
+    "paths": {
+      "types": ["./node_modules/qcobjects/src/types/global/index.d.ts"]
+    }
   },
   "include": ["src/**/*.ts"],
   "exclude": ["src/**/*.spec.js", "src/*.js"]
