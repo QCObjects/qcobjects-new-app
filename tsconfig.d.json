@@ -1,5 +1,11 @@
 {
-  "extends": "qcobjects-tsconfig/tsconfig.d.json",
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "allowJs": false,
+    "declaration": true,
+    "emitDeclarationOnly": true,
+    "outDir": "public/types"
+  },
   "include": ["src/**/*.ts"],
   "exclude": ["src/**/*.spec.js", "src/*.js"]
 }
