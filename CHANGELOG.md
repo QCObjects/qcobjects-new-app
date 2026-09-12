@@ -1,5 +1,11 @@
 # Changelog
 
+## v2.5.6-ts
+
+	- fix: repository.url QuickCorp -> QCObjects (+type file -> git). Sigstore provenance (OIDC) hard-requires package.json repo to match the true repo QCObjects/qcobjects-new-app (E422 on v2.5.5-ts: attestation vs QuickCorp URL). URL set to exactly https://github.com/QCObjects/qcobjects-new-app.
+	- version: 2.5.5-ts -> 2.5.6-ts (v2.5.5-ts tag points at the pre-URL-fix main; tags immutable -> new number)
+
+
 ## v2.5.5-ts
 
 	- fix: npmpublish workflow now passes explicit --tag latest on the default branch (modern npm refuses bare npm publish for prerelease versions: You must specify a tag using --tag when publishing a prerelease version — killed the v2.5.4-ts publish after build went green; the npm@latest upgrade for OIDC is what enforces it).
