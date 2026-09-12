@@ -1,6 +1,6 @@
 {
   "name": "qcobjectsnewapp",
-  "version": "2.5.2-ts",
+  "version": "2.5.4-ts",
   "description": "App template for New App in QCObjects",
   "targets": {
     "default": {
@@ -26,7 +26,8 @@
   },
   "scripts": {
     "test": "(npm run lint && (npx jasmine))",
-    "lint": "(npx eslint \"src/**/*.ts\" --fix --ext ts)",
+    "lint": "qcobjects lint",
+    "lint:fix": "qcobjects lint --fix",
     "sync": "git add . && git commit -am ",
     "preversion": "npm i --upgrade && npm test",
     "postversion": "git push && git push --tags",
@@ -51,20 +52,18 @@
     "minify:css": "(npx esbuild build/css/*.css build/css/**/*.css --outdir=public/css --keep-names --minify --global-name=global --sourcemap --loader:.svg=file --target=es2021)",
     "build:docker": "docker build -t qcobjects/qcobjects-newapp:latest .",
     "build:docker-compose": "docker-compose -f docker-compose.yml build --no-cache --force-rm --pull -q qcobjects",
-     "build:static": "npx qcobjects-cli publish:static src/ build/ --exclude js --exclude=.DS_Store",
-     "clean:appledouble": "node -e \"const fs=require('fs'),path=require('path');let n=0;for(const d of ['build','src'])if(fs.existsSync(d)){const walk=x=>fs.readdirSync(x,{withFileTypes:true}).flatMap(e=>{const p=path.join(x,e.name);return e.isDirectory()?walk(p):[p]});for(const f of walk(d))if(path.basename(f).startsWith('._')){fs.rmSync(f);n++;}}console.log('appledouble removed:',n)\"",
-     "build:ts": "npm test && qcobjects build:typescript tsconfig.json",
-     "build:ts-types": "qcobjects build:typescript tsconfig.d.json",
+    "build:static": "npx qcobjects-cli publish:static src/ build/ --exclude js --exclude=.DS_Store",
+    "clean:appledouble": "node -e \"const fs=require('fs'),path=require('path');let n=0;for(const d of ['build','src'])if(fs.existsSync(d)){const walk=x=>fs.readdirSync(x,{withFileTypes:true}).flatMap(e=>{const p=path.join(x,e.name);return e.isDirectory()?walk(p):[p]});for(const f of walk(d))if(path.basename(f).startsWith('._')){fs.rmSync(f);n++;}}console.log('appledouble removed:',n)\"",
     "build:ts": "npm test && qcobjects build:typescript tsconfig.json",
     "build:ts-types": "qcobjects build:typescript tsconfig.d.json",
     "build:netlify": "npm run publish:web",
     "build": "npm run publish:web",
-     "publish:static": "npm run clean:appledouble && (npx qcobjects-cli publish:static build/ public/ --exclude js --exclude=.DS_Store) && npm run minify:css",
-     "postpublish:static": "npm run clean:appledouble",
+    "publish:static": "npm run clean:appledouble && (npx qcobjects-cli publish:static build/ public/ --exclude js --exclude=.DS_Store) && npm run minify:css",
+    "postpublish:static": "npm run clean:appledouble",
     "publish:ios": "qcobjects publish ios",
     "publish:android": "qcobjects publish android",
     "publish:electron": "qcobjects publish electron",
-    "publish:esbuild": "npx esbuild build/js/*.js build/js/**/*.js --bundle --outdir=public/js --keep-names --minify --global-name=global --sourcemap --splitting --chunk-names=chunks/[name]-[hash] --format=esm --target=es2021",
+    "publish:esbuild": "npx esbuild build/js/*.js build/js/**/*.js --bundle --outdir=public/js --keep-names --minify --global-name=global --sourcemap --format=iife --target=es2021 --external:fs --external:path --external:os --external:util --external:events --external:stream --external:http --external:https --external:crypto --external:zlib --external:buffer --external:url --external:querystring --external:child_process --external:cluster --external:dgram --external:dns --external:net --external:readline --external:repl --external:tls --external:tty --external:vm --external:worker_threads --external:process --external:node:* --external:types",
     "publish:parcel": "npx parcel build",
     "publish:web": "npm run build:static && npm run build:ts && npm run publish:static && npm run publish:esbuild && npm run generate-sw",
     "publish:docker": "docker push qcobjects/qcobjects-newapp:latest",
@@ -94,29 +93,13 @@
   "author": "Jean Machuca (correojean@gmail.com)",
   "license": "MIT",
   "devDependencies": {
-    "@types/qcobjects": "https://github.com/QCObjects/-types-qcobjects/archive/51470ffb98ec539a5563e5eb5426e9d5adddfad3.tar.gz",
-    "@types/qcobjects-sdk": "https://github.com/QCObjects/-types-qcobjects-sdk/archive/230425c25deff48fc15dee4008def6e6afddacbd.tar.gz",
-    "@typescript-eslint/eslint-plugin": "^5.59.11",
-    "@typescript-eslint/parser": "^5.58.0",
-    "eslint": "^8.39.0",
-    "eslint-config-prettier": "^8.8.0",
-    "eslint-config-qcobjects": "^0.0.26",
-    "eslint-config-qcobjects-typescript": "^2.4.5",
-    "eslint-config-semistandard": "^17.0.0",
-    "eslint-config-standard": "^17.0.0",
-    "eslint-config-standard-with-typescript": "^34.0.1",
-    "eslint-plugin-import": "^2.27.5",
-    "eslint-plugin-n": "^15.7.0",
-    "eslint-plugin-promise": "^6.1.1",
+    "@types/node": "^22.10.0",
     "hint": "^2.0.0",
     "husky": "^8.0.3",
     "jasmine": "^3.99.0",
     "lighthouse": "^12.1.0",
-    "lint-staged": "^13.2.1",
-    "qcobjects-cli": ">=2.5.158 <3.0.0",
-    "qcobjects-tsconfig": "^2.4.10",
-    "semistandard": "^16.0.1",
-    "typescript": "^5.0.4"
+    "qcobjects-cli": ">=2.6.2 <3.0.0",
+    "typescript": "^5.7.2"
   },
   "dependencies": {
     "grunt": "^1.4.1",
@@ -128,15 +111,10 @@
     "qcobjects-sdk": ">=2.4.64 <3.0.0"
   },
   "overrides": {
-    "@types/qcobjects": "https://github.com/QCObjects/-types-qcobjects/archive/51470ffb98ec539a5563e5eb5426e9d5adddfad3.tar.gz",
-    "@types/qcobjects-sdk": "https://github.com/QCObjects/-types-qcobjects-sdk/archive/230425c25deff48fc15dee4008def6e6afddacbd.tar.gz",
     "qcobjects-admin-lib-db-sqlite3": "^0.0.25"
   },
   "engines": {
     "npm": ">=8",
     "node": ">=16"
-  },
-  "lint-staged": {
-    "**/*": "prettier --write --ignore-unknown"
   }
 }

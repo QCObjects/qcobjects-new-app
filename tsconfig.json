@@ -1,9 +1,25 @@
 {
-  "extends": "qcobjects-tsconfig/tsconfig.json",
+  "extends": "qcobjects/tsconfig.json",
   "compilerOptions": {
-    "rootDir": "src",                                    /* Specify the root folder within your source files. */
-    "allowJs": true,                                     /* Allow JavaScript files to be a part of your program. Use the 'checkJS' option to get errors from these files. */
-    "outDir": "build",                                  /* Specify an output folder for all emitted files. */  
+    "strict": false,
+    "noImplicitAny": false,
+    "strictNullChecks": false,
+    "noImplicitThis": false,
+    "alwaysStrict": false,
+    "module": "CommonJS",
+    "moduleResolution": "Node",
+    "target": "ES2021",
+    "lib": [
+      "ES2021",
+      "DOM"
+    ],
+    "rootDir": "src",
+    "allowJs": true,
+    "outDir": "build",
+    "baseUrl": ".",
+    "paths": {
+      "types": ["./node_modules/qcobjects/src/types/global/index.d.ts"]
+    }
   },
   "include": ["src/**/*.ts"],
   "exclude": ["src/**/*.spec.js", "src/*.js"]
