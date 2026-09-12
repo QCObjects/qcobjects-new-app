@@ -1,5 +1,16 @@
 # Changelog
 
+## v2.5.3-ts
+
+	- release: template 2.5.x npm publish UNBLOCKED (PR 12+13: browser-safe publish:esbuild via iife + node/types externals — 0 eager node:/*/types top-level imports in the browser bundle; publish:web/webassembly/static gates green); version bump 2.5.2-ts -> 2.5.3-ts
+
+
+## v2.5.3-ts
+
+	- release: template publish unblocked (PR 12+13: browser-safe publish:esbuild via iife + node/'types' externals; 2.5.x template). npm version bump 2.5.2-ts -> 2.5.3-ts
+	- fix: publish:web gate — npm run build passes end-to-end including publish:esbuild (iife browser-safe bundle: 0 eager node:/*types top-level imports; node ready-state + types stay lazy in browser)
+
+
 ## v2.5.2-ts
 
 	- publish:static now sweeps macOS AppleDouble droppings cross-platform (clean:appledouble, pre-commit + postpublish:static)
