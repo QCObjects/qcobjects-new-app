@@ -1,6 +1,6 @@
 {
   "name": "qcobjectsnewapp",
-  "version": "2.5.5-ts",
+  "version": "2.5.6-ts",
   "description": "App template for New App in QCObjects",
   "targets": {
     "default": {
@@ -81,8 +81,8 @@
     "generate-sw": "npx qcobjects generate-sw qcobjectsnewapp -d public"
   },
   "repository": {
-    "type": "file",
-    "url": "https://github.com/QuickCorp/qcobjects-new-app.git"
+    "type": "git",
+    "url": "https://github.com/QCObjects/qcobjects-new-app"
   },
   "keywords": [
     "qcobjects",
