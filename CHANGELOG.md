@@ -1,5 +1,11 @@
 # Changelog
 
+## v2.5.7-ts
+
+	- deps: qcobjects >=2.5.142 -> >=2.6.3 (brings logger.error fix + browser-safe lazified node builtins); qcobjects-sdk >=2.4.64 -> >=2.6.2 (externalized core, no more dynamic require(node:process) in dist).
+	- version: 2.5.6-ts -> 2.5.7-ts
+
+
 ## v2.5.6-ts
 
 	- fix: repository.url QuickCorp -> QCObjects (+type file -> git). Sigstore provenance (OIDC) hard-requires package.json repo to match the true repo QCObjects/qcobjects-new-app (E422 on v2.5.5-ts: attestation vs QuickCorp URL). URL set to exactly https://github.com/QCObjects/qcobjects-new-app.
