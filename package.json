@@ -1,6 +1,6 @@
 {
   "name": "qcobjectsnewapp",
-  "version": "2.5.7-ts",
+  "version": "2.5.8-ts",
   "description": "App template for New App in QCObjects",
   "targets": {
     "default": {
@@ -106,7 +106,7 @@
     "grunt-contrib-jasmine": "^4.0.0",
     "npm-watch": "^0.11.0",
     "nyc": "^15.1.0",
-    "qcobjects": ">=2.6.3 <3.0.0",
+    "qcobjects": ">=2.6.4 <3.0.0",
     "qcobjects-admin": "^1.0.0",
     "qcobjects-sdk": ">=2.6.2 <3.0.0"
   },
