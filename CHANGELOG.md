@@ -1,5 +1,11 @@
 # Changelog
 
+## v2.5.8-ts
+
+	- deps: qcobjects >=2.6.3 -> >=2.6.4 (global defineProperty fix for browser strict-mode TypeError)
+	- version: 2.5.7-ts -> 2.5.8-ts
+
+
 ## v2.5.7-ts
 
 	- deps: qcobjects >=2.5.142 -> >=2.6.3 (brings logger.error fix + browser-safe lazified node builtins); qcobjects-sdk >=2.4.64 -> >=2.6.2 (externalized core, no more dynamic require(node:process) in dist).
