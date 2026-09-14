@@ -1,6 +1,6 @@
 {
   "name": "qcobjectsnewapp",
-  "version": "2.5.8-ts",
+  "version": "2.5.9-ts",
   "description": "App template for New App in QCObjects",
   "targets": {
     "default": {
@@ -98,7 +98,7 @@
     "husky": "^8.0.3",
     "jasmine": "^3.99.0",
     "lighthouse": "^12.1.0",
-    "qcobjects-cli": ">=2.6.2 <3.0.0",
+    "qcobjects-cli": ">=2.7.0 <3.0.0",
     "typescript": "^5.7.2"
   },
   "dependencies": {
@@ -106,9 +106,9 @@
     "grunt-contrib-jasmine": "^4.0.0",
     "npm-watch": "^0.11.0",
     "nyc": "^15.1.0",
-    "qcobjects": ">=2.6.4 <3.0.0",
+    "qcobjects": "^2.7.1",
     "qcobjects-admin": "^1.0.0",
-    "qcobjects-sdk": ">=2.6.2 <3.0.0"
+    "qcobjects-sdk": ">=2.7.0 <3.0.0"
   },
   "overrides": {
     "qcobjects-admin-lib-db-sqlite3": "^0.0.25"

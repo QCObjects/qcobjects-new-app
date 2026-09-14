@@ -3,7 +3,7 @@
 /* eslint-disable no-unused-vars */
 "use strict";
 
-import global, { Package, Controller, logger, _DOMCreateElement, 
+import { Package, Controller, logger, _DOMCreateElement, set, 
                 type Effect, New, ClassFactory, type QCObjectsElement, 
                 type QCObjectsShadowedElement, type Component, type ControllerParams } from "qcobjects";
 import { Fade } from "qcobjects-sdk";
@@ -46,7 +46,7 @@ Package("org.quickcorp.custom.controllers", [
       } else {
         this.componentRoot = this.component.body;
       }
-      (global as any).sideNavController = this;
+      set("sideNavController", this);
       this.effect = new Fade({
         duration: 300
       });
@@ -54,8 +54,19 @@ Package("org.quickcorp.custom.controllers", [
 
     done(...args: any[]) {
       const _ret_ = super.done(args);
+      this.bindControls();
       this.close();
       return _ret_;
+    }
+
+    bindControls() {
+      if (this.componentRoot) {
+        const navLinks = (this.componentRoot as QCObjectsElement)?.subelements("a[href]");
+        navLinks?.map((link: HTMLElement) => {
+          link.addEventListener("click", () => this.close());
+          return link;
+        });
+      }
     }
 
     open() {

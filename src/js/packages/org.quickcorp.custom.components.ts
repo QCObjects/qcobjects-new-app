@@ -111,10 +111,10 @@ class AdminSidebarOption extends AdminCheckComponent {
   <details>
       <summary>Admin</summary>
       <ul>
-        <li><a onclick="global.sideNavController.close();return true;" href="/admin">Admin Tool</a></li>
-        <li><a onclick="global.sideNavController.close();return true;" href="/admin/plugins">Plugins</a></li>
-        <li><a onclick="global.sideNavController.close();return true;" href="/admin/handlers">Handlers</a></li>
-        <li><a onclick="global.sideNavController.close();return true;" href="/admin/libs">Libs</a></li>
+        <li><a href="/admin">Admin Tool</a></li>
+        <li><a href="/admin/plugins">Plugins</a></li>
+        <li><a href="/admin/handlers">Handlers</a></li>
+        <li><a href="/admin/libs">Libs</a></li>
       </ul>
   </details>
 

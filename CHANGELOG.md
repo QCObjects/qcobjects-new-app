@@ -1,5 +1,11 @@
 # Changelog
 
+## v2.5.9-ts
+
+	- deps: qcobjects/qcobjects-sdk/qcobjects-cli -> >=2.7.0 (aligned 2.7.0 framework line; detached _top, global.get/set deprecated)
+	- version: 2.5.8-ts -> 2.5.9-ts
+
+
 ## v2.5.8-ts
 
 	- deps: qcobjects >=2.6.3 -> >=2.6.4 (global defineProperty fix for browser strict-mode TypeError)
