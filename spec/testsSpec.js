@@ -7,7 +7,8 @@ const {
   New,
   Component,
   Effect,
-  logger
+  logger,
+  global
 } = require("qcobjects");
 const { NotificationComponent } = require("qcobjects-sdk");
 
@@ -37,9 +38,13 @@ describe("QCObjects Main Test", function () {
     logger.debug("Existence of Effect Class... OK");
   });
 
-  it("global exposes QCObjects classes", function () {
-    expect(typeof global.Component).toEqual("function");
+  it("global exposes QCObjects classes (shared context)", function () {
+    // global is the shared context (== _top); classes are consumed via direct
+    // import or ClassFactory since core 2.7.0 deduped the ambient global.
+    expect(typeof global).toEqual("object");
     expect(typeof global.Class).toEqual("function");
+    expect(ClassFactory("Component")).toEqual(Component);
+    expect(typeof Component).toEqual("function");
     logger.debug("global as QCObjects global... OK");
   });
 

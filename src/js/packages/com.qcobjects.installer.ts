@@ -1,6 +1,6 @@
 /* eslint-disable no-unreachable */
 "use strict";
-import global, { InheritClass, Package, logger } from "qcobjects";
+import { InheritClass, Package, logger, set, get } from "qcobjects";
 import { NotificationComponent } from "qcobjects-sdk";
 
 Package("com.qcobjects.installer", [
@@ -32,7 +32,7 @@ Package("com.qcobjects.installer", [
         }
         NotificationComponent.success(`TWA in ${displayMode} Mode`);
       });
-      global.set("installer", this);
+      set("installer", this);
     }
 
     /**
@@ -45,7 +45,7 @@ Package("com.qcobjects.installer", [
     beforeinstallprompt (e: Event) {
       logger.debug("registering installer event");
       e.preventDefault();
-      global.set("promptEvent", e);
+      set("promptEvent", e);
       this.root.classList.add("available");
       return false;
     }
@@ -56,7 +56,7 @@ Package("com.qcobjects.installer", [
      */
     installed () {
       logger.debug("app is already installed");
-      global.set("promptEvent", null);
+      set("promptEvent", null);
       //         This fires after onbeforinstallprompt OR after manual add to homescreen.
       this.root.classList.remove("available");
     }
@@ -68,7 +68,7 @@ Package("com.qcobjects.installer", [
     install () {
       const root = this.root;
       logger.debug("installer actioned");
-      let promptEvent = global.get("promptEvent", null);
+      let promptEvent = get("promptEvent", null);
       if (promptEvent) {
         logger.debug("prompt event");
 
