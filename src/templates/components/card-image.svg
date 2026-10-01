@@ -1,0 +1,33 @@
+<!--
+  placeholder.svg
+
+  Template for the svg-component. Rendered as the card header, replacing the
+  dead via.placeholder.com image that returned 404.
+
+  The two double-brace markers below are resolved by the framework. They arrive
+  as the data-stars and data-watchers attributes, which Component.dataAttributes
+  exposes as data.stars and data.watchers, and the template handler substitutes
+  them. This comment deliberately avoids that syntax so it is left alone.
+
+  Icons and text use currentColor so the bar inherits the surrounding text colour
+  and stays legible on either a light or a dark card.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 230 56" width="100%" height="56" preserveAspectRatio="xMinYMid meet" role="img" aria-label="Repository stars and watchers">
+  <title>Repository stars and watchers</title>
+
+  <!-- separator between the two stats -->
+  <line x1="96" y1="14" x2="96" y2="42" stroke="currentColor" stroke-width="2" stroke-linecap="round" opacity="0.45" />
+
+  <!-- stars icon -->
+  <polygon fill="currentColor" points="20,17 22.7,24.28 30.46,24.6 24.38,29.42 26.47,36.9 20,32.6 13.53,36.9 15.62,29.42 9.54,24.6 17.3,24.28" />
+
+  <!-- watchers icon -->
+  <path d="M112 28 Q128 12 144 28 Q128 44 112 28 Z" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" />
+  <circle cx="128" cy="28" r="6.5" fill="currentColor" />
+
+  <!-- star count, injected -->
+  <text x="38" y="35" fill="currentColor" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="20" font-weight="600">{{stars}}</text>
+
+  <!-- watcher count, injected -->
+  <text x="152" y="35" fill="currentColor" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="20" font-weight="600">{{watchers}}</text>
+</svg>
