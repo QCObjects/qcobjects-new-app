@@ -1,6 +1,6 @@
 {
   "name": "qcobjectsnewapp",
-  "version": "2.5.11-ts",
+  "version": "2.5.12-ts",
   "description": "App template for New App in QCObjects",
   "targets": {
     "default": {
