@@ -122,9 +122,13 @@ Package("org.quickcorp.custom.controllers", [
     }
 
     loadInstallerButton() {
-      const componentRoot = (this.component.shadowed != null) 
-                            ? (this.component.shadowRoot as QCObjectsShadowedElement) 
+      const componentRoot = this.component.shadowed
+                            ? (this.component.shadowRoot as QCObjectsShadowedElement)
                             : (this.component.body as QCObjectsElement);
+      if (typeof componentRoot === "undefined" || componentRoot === null) {
+        logger.debug("HeaderController has no component root yet, skipping installer button");
+        return;
+      }
       componentRoot.subelements("#installerbutton").map(
         (element) => {
           this.installer = New(ClassFactory("Installer"), element);
