@@ -105,7 +105,8 @@ Package("com.qcobjects.services.github", [
           description: project.description,
           title: project.name,
           url: project.html_url,
-          image: `https://via.placeholder.com/170/000000/FFFFFF?text=${encodeURI(project.name)}`
+          repo_stargazers_count: project.stargazers_count,
+          repo_watchers_count: project.watchers_count
         };
       });
 
@@ -134,7 +135,8 @@ Package("com.qcobjects.services.github", [
           description: project.description,
           title: project.name,
           url: project.html_url,
-          image: `https://via.placeholder.com/170/000000/FFFFFF?text=${encodeURI(project.name)}`
+          repo_stargazers_count: project.stargazers_count,
+          repo_watchers_count: project.watchers_count
         };
       });
 
