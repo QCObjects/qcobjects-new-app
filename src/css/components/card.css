@@ -14,7 +14,15 @@
  * Everyone is permitted to copy and distribute verbatim copies of this
  * license document, but changing it is not allowed.
  */
-.card {
+
+/* Selectors are scoped under ":root, :host" so this stylesheet applies whether
+   the card is rendered in the document or inside a shadow root:
+     :root  matches when the sheet is loaded at document level
+     :host  matches when the sheet is loaded inside a shadow root
+   Both appear in the same rule, so neither context discards the other. */
+
+:root .card,
+:host .card {
   box-shadow: rgba(228, 228, 234, 0.22) 0 22px 25px 0, rgba(228, 228, 234, 0.5) 0 9px 23px 0;
   transition: all 0.3s ease-in-out;
   width: 100%;
@@ -23,40 +31,54 @@
   border-radius: 30px;
 }
 
-.title{
+:root .title,
+:host .title {
   padding-top: 5px;
   padding-bottom: 15px;
 }
-.description {
+
+:root .description,
+:host .description {
   padding-top: 15px;
   padding-bottom: 10px;
 }
 
-.img, .title, .description {
+:root .img,
+:root .title,
+:root .description,
+:host .img,
+:host .title,
+:host .description {
   overflow: hidden;
 }
 
-.card:hover {
+:root .card:hover,
+:host .card:hover {
   box-shadow: rgba(228, 228, 234, 0.56) 0 22px 32px 0, rgba(228, 228, 234, 0.64) 0 9px 28px 0;
 }
 
-.card .container {
+:root .card .container,
+:host .card .container {
   padding: 2px 16px;
   min-height: 100%;
 }
 
-.card img, div > div.img {
+:root .card img,
+:root div > div.img,
+:host .card img,
+:host div > div.img {
   border-radius: 30px 30px 0 0;
   min-height: 100px;
 }
 
-#slot-logo::slotted(img) {
+:root #slot-logo::slotted(img),
+:host #slot-logo::slotted(img) {
   border-radius: 30px 30px 0 0;
   min-height: 100px;
 }
 
-
-.card button {
+:root .card button,
+:host .card button {
   border: none;
   outline: 0;
   padding: 12px;
@@ -68,11 +90,13 @@
   font-size: 18px;
 }
 
-.card button:hover {
+:root .card button:hover,
+:host .card button:hover {
   opacity: 0.7;
 }
 
-#slot-card-button::slotted(button) {
+:root #slot-card-button::slotted(button),
+:host #slot-card-button::slotted(button) {
   border: none;
   outline: 0;
   padding: 12px;
@@ -84,15 +108,18 @@
   font-size: 18px;
 }
 
-#slot-card-button::slotted(button):hover {
+:root #slot-card-button::slotted(button):hover,
+:host #slot-card-button::slotted(button):hover {
   opacity: 0.7;
 }
 
-.card {
+:root .card,
+:host .card {
   max-height: 1600px;
 }
 
-#slot-card-description::slotted(div) {
+:root #slot-card-description::slotted(div),
+:host #slot-card-description::slotted(div) {
   height: 50px;
   min-height: 50px;
   max-height: 50px;
