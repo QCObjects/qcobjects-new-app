@@ -108,7 +108,7 @@
     "nyc": "^15.1.0",
     "qcobjects": ">=2.7.1 <3.0.0",
     "qcobjects-admin": "^1.0.0",
-    "qcobjects-sdk": ">=2.7.0 <3.0.0"
+    "qcobjects-sdk": "^2.7.1"
   },
   "overrides": {
     "qcobjects-admin-lib-db-sqlite3": "^0.0.25"
