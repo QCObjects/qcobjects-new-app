@@ -18,9 +18,24 @@
     "outDir": "build",
     "baseUrl": ".",
     "paths": {
-      "types": ["./node_modules/qcobjects/src/types/global/index.d.ts"]
-    }
+      "types": [
+        "./node_modules/qcobjects/src/types/global/index.d.ts"
+      ]
+    },
+    "strictPropertyInitialization": false,
+    "types": [
+      "node"
+    ],
+    "typeRoots": [
+      "./node_modules/@types"
+    ],
+    "skipLibCheck": true
   },
-  "include": ["src/**/*.ts"],
-  "exclude": ["src/**/*.spec.js", "src/*.js"]
+  "include": [
+    "src/**/*.ts"
+  ],
+  "exclude": [
+    "src/**/*.spec.js",
+    "src/*.js"
+  ]
 }

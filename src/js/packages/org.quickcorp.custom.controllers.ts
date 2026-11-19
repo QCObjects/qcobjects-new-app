@@ -4,20 +4,20 @@
 "use strict";
 
 import { Package, Controller, logger, _DOMCreateElement, set, 
-                type Effect, New, ClassFactory, type QCObjectsElement, 
-                type QCObjectsShadowedElement, type Component, type ControllerParams } from "qcobjects";
+                type Effect, New, ClassFactory, type IQCObjectsElement, 
+                type IQCObjectsShadowedElement, type Component, type TControllerParams } from "qcobjects";
 import { Fade } from "qcobjects-sdk";
 
 Package("org.quickcorp.custom.controllers", [
   class MainController extends Controller {
     static loaded: boolean;
-    constructor(controller:ControllerParams) {
+    constructor(controller:TControllerParams) {
       logger.debug("Initializing MainController...");
       super(controller);
     }
 
     done(...args: never[]) {
-      const _ret_ = super.done(args);
+      const _ret_ = super.done();
       if (!MainController.loaded) {
         const s = _DOMCreateElement("style");
         s.innerHTML = `
@@ -37,10 +37,10 @@ Package("org.quickcorp.custom.controllers", [
     componentRoot!: any;
     component: Component;
 
-    constructor(controller:ControllerParams) {
+    constructor(controller:TControllerParams) {
       logger.debug("Initializing SideNavController...");
       super(controller);
-      this.component = controller.component;
+      this.component = controller.component as unknown as Component;
       if (this.component.shadowed) {
         this.componentRoot = this.component.shadowRoot;
       } else {
@@ -53,7 +53,7 @@ Package("org.quickcorp.custom.controllers", [
     }
 
     done(...args: any[]) {
-      const _ret_ = super.done(args);
+      const _ret_ = super.done();
       this.bindControls();
       this.close();
       return _ret_;
@@ -61,7 +61,7 @@ Package("org.quickcorp.custom.controllers", [
 
     bindControls() {
       if (this.componentRoot) {
-        const navLinks = (this.componentRoot as QCObjectsElement)?.subelements("a[href]");
+        const navLinks = (this.componentRoot as IQCObjectsElement)?.subelements("a[href]");
         navLinks?.map((link: HTMLElement) => {
           link.addEventListener("click", () => this.close());
           return link;
@@ -78,8 +78,8 @@ Package("org.quickcorp.custom.controllers", [
         // eslint-disable-next-line no-extra-boolean-cast
         if (!!this.componentRoot?.parentElement) {
           if (this.componentRoot.parentElement !== null) {
-            (this.componentRoot.parentElement as QCObjectsElement).subelements(".navbtn")[0].style.display = "none";
-            (this.componentRoot.parentElement as QCObjectsElement).subelements(".closebtn")[0].style.display = "block";
+            (this.componentRoot.parentElement as IQCObjectsElement).subelements(".navbtn")[0].style.display = "none";
+            (this.componentRoot.parentElement as IQCObjectsElement).subelements(".closebtn")[0].style.display = "block";
           }
         }
       }
@@ -95,8 +95,8 @@ Package("org.quickcorp.custom.controllers", [
         this.componentRoot?.classList.remove("open");
         // eslint-disable-next-line no-extra-boolean-cast
         if (!!this.componentRoot?.parentElement) {
-          (this.componentRoot.parentElement as QCObjectsElement).subelements(".navbtn")[0].style.display = "block";
-          (this.componentRoot.parentElement as QCObjectsElement).subelements(".closebtn")[0].style.display = "none";
+          (this.componentRoot.parentElement as IQCObjectsElement).subelements(".navbtn")[0].style.display = "block";
+          (this.componentRoot.parentElement as IQCObjectsElement).subelements(".closebtn")[0].style.display = "none";
         }
       }
       this.visibility = false;
@@ -116,15 +116,15 @@ Package("org.quickcorp.custom.controllers", [
     installer: any;
     component!: Component;
 
-    constructor(controller: ControllerParams) {
+    constructor(controller: TControllerParams) {
       super(controller);
       logger.debug("Header controller initialized");
     }
 
     loadInstallerButton() {
       const componentRoot = this.component.shadowed
-                            ? (this.component.shadowRoot as QCObjectsShadowedElement)
-                            : (this.component.body as QCObjectsElement);
+                            ? (this.component.shadowRoot as IQCObjectsShadowedElement)
+                            : (this.component.body as IQCObjectsElement);
       if (typeof componentRoot === "undefined" || componentRoot === null) {
         logger.debug("HeaderController has no component root yet, skipping installer button");
         return;
@@ -138,7 +138,7 @@ Package("org.quickcorp.custom.controllers", [
     }
 
     done(...args: never[]) {
-      const _ret_ = super.done(args);
+      const _ret_ = super.done();
       this.loadInstallerButton();
       return _ret_;
     }

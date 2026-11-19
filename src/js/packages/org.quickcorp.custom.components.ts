@@ -1,6 +1,6 @@
 "use strict";
 
-import { Package, Component, ComponentParams, ComponentDoneResponse, logger } from "qcobjects";
+import { Package, Component, type TComponentParams, type TComponentDoneResponse, logger } from "qcobjects";
 
 type ComponentServiceData = Component & {
   serviceData:any;
@@ -50,7 +50,7 @@ class AdminCheckComponent extends Component {
   shadowed = true;
   tplsource = "inline";
 
-  constructor (o:ComponentParams){
+  constructor (o:TComponentParams){
     o.body?.setAttribute("serviceClass", "AdminCheckService");
     o.body?.setAttribute("response-to", "data");
     super(o);
@@ -121,7 +121,7 @@ class AdminSidebarOption extends AdminCheckComponent {
   </div>
   `;
 
-  done (standardResponse:ComponentDoneResponse):Promise<ComponentDoneResponse>{
+  done (standardResponse:TComponentDoneResponse):Promise<TComponentDoneResponse>{
     const component = standardResponse.component as ComponentServiceData;
     console.log(component.serviceData);
     try {
@@ -168,7 +168,7 @@ class AdminButton extends AdminCheckComponent {
   </div>
   `;
 
-  done (standardResponse:ComponentDoneResponse):Promise<ComponentDoneResponse>{
+  done (standardResponse:TComponentDoneResponse):Promise<TComponentDoneResponse>{
     const component = standardResponse.component as ComponentServiceData;
     console.log(component.serviceData);
     try {

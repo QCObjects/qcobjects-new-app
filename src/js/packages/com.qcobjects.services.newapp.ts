@@ -17,7 +17,7 @@ Package("com.qcobjects.services.newapp", [
         return (/<base href="\/admin\/" target="_self">/).test(template);
       };
       standardResponse.service.template = _DataStringify({
-        hasAdmin: hasAdmin(standardResponse.service.template)
+        hasAdmin: hasAdmin(standardResponse.service.template as unknown as string)
       });
     }
 
