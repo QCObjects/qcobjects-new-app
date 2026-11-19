@@ -29,7 +29,7 @@ type ItemProject = {
   description:string;
   title:string;
   url:string;
-  image:string;
+  image?:string;
 };
 type ItemsProject = Array<ItemProject>;
 
@@ -73,7 +73,7 @@ Package("com.qcobjects.services.github", [
      *
      * @type {{ "Content-Type": string; }}
      */
-    headers = { "Content-Type": "application/json" };
+    headers = { "Content-Type": "application/json", "charset": "utf-8" };
 
     /**
      * URL for the service call
@@ -98,7 +98,7 @@ Package("com.qcobjects.services.github", [
      */
     done({ request, service }: StandardResponse) {
 
-      const result:ItemsProject = (JSON.parse(service.template) as Array<Project>)
+      const result:ItemsProject = (JSON.parse(service.template as string) as Array<Project>)
       .reverse().map(function (project: Project) {
         return {
           id: project.id,
@@ -122,13 +122,13 @@ Package("com.qcobjects.services.github", [
     external = true;
     cached = false;
     method = "GET";
-    headers = { "Content-Type": "application/json" };
+    headers = { "Content-Type": "application/json", "charset": "utf-8" };
     url = "https://api.github.com/search/repositories?q=qcobjects";
     withCredentials = false;
 
     done({ request, service }: StandardResponse) {
-      logger.debug(request);
-      const result:ItemsProject = (JSON.parse(service.template) as GitHubTagServiceResponse)
+      logger.debug(String(request));
+      const result:ItemsProject = (JSON.parse(service.template as string) as GitHubTagServiceResponse)
         .items.map(function (project: Project) {
         return {
           id: project.id,
@@ -152,12 +152,12 @@ Package("com.qcobjects.services.github", [
     external = true;
     cached = false;
     method = "GET";
-    headers = { "Content-Type": "application/json" };
+    headers = { "Content-Type": "application/json", "charset": "utf-8" };
     url = "https://api.github.com/repos/QuickCorp/QCObjects/tags";
     withCredentials = false;
 
     done({ service }: StandardResponse) {
-      const latest = JSON.parse(service.template)[0];
+      const latest = JSON.parse(service.template as string)[0];
       service.template = {
         version: latest.name
       };
@@ -170,12 +170,12 @@ Package("com.qcobjects.services.github", [
     external = true;
     cached = false;
     method = "GET";
-    headers = { "Content-Type": "application/json" };
+    headers = { "Content-Type": "application/json", "charset": "utf-8" };
     url = "https://api.github.com/repos/QuickCorp/QCObjects";
     withCredentials = false;
 
     done({ service }: StandardResponse) {
-      const repo:Project = (JSON.parse(service.template) as Project);
+      const repo:Project = (JSON.parse(service.template as string) as Project);
       service.template = {
         forks: repo.forks_count,
         stars: repo.stargazers_count,

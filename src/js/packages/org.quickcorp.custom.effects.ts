@@ -6,7 +6,7 @@ Package("org.quickcorp.custom.effects", [
 
   class MainTransitionEffect extends TransitionEffect {
     duration = 780;
-    defaultParams = {
+    defaultParams: /* partial by design; base class supplies the rest */ any = {
       alphaFrom: 0,
       alphaTo: 1
     };
